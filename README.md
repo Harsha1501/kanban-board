@@ -75,6 +75,7 @@ npm install
 
 # Run the app
 npm start
+
 ![Kanban Board](./assets/screenshot.png)
 
 ## Learning Outcomes
