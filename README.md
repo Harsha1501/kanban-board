@@ -11,6 +11,7 @@ A simplified Kanban board built with React that allows users to drag and drop ta
  https://github.com/Harsha1501/kanban-board
 
 ## Features
+
  Three-column layout:
 To Do
 In Progress
@@ -62,6 +63,7 @@ setTimeout(() => {
   if (Math.random() < 0.2) reject(new Error("Server error"));
   else resolve();
 }, 1500);
+
 ## Installation & Setup
 
 # Clone repository
