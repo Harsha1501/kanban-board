@@ -1,70 +1,91 @@
-# Getting Started with Create React App
+## Kanban Board (Trello-style)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A simplified Kanban board built with React that allows users to drag and drop tasks between columns using Optimistic UI updates and automatic rollback on failure.
 
-## Available Scripts
+ Live Demo
 
-In the project directory, you can run:
+ https://kanban-board-one-gold.vercel.app/
 
-### `npm start`
+ GitHub Repository
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+ https://github.com/Harsha1501/kanban-board
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Features
+ Three-column layout:
+To Do
+In Progress
+Done
+Drag and drop tasks between columns
+Instant UI updates (Optimistic UI)
+Rollback if API fails
+Simulated API delay (1.5 seconds)
+20% random API failure simulation
+Toast notifications for errors
+Clean and modern UI using Tailwind CSS
+Core Concept: Optimistic UI
 
-### `npm test`
+This project demonstrates Optimistic UI updates, a technique used in modern frontend applications.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## How it works:
 
-### `npm run build`
+When a task is moved, the UI updates instantly.
+A mock API request is sent in the background.
+If the API succeeds → UI remains unchanged.
+If the API fails → UI rolls back to previous state and shows an error notification.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Tech Stack
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+React
+Tailwind CSS
+dnd-kit (Drag & Drop)
+react-hot-toast (Notifications)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Project Structure
 
-### `npm run eject`
+src/
+components/
+Board.jsx
+Column.jsx
+TaskCard.jsx
+data/
+initialData.js
+lib/
+mockApi.js
+App.jsx
+index.css
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Mock API Details
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Simulates a 1.5-second delay
+Has a 20% chance of failure
+setTimeout(() => {
+  if (Math.random() < 0.2) reject(new Error("Server error"));
+  else resolve();
+}, 1500);
+## Installation & Setup
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+# Clone repository
+git clone https://github.com/Harsha1501/kanban-board.git
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+# Navigate into project
+cd kanban-board
 
-## Learn More
+# Install dependencies
+npm install
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+# Run the app
+npm start
+![Kanban Board Screenshot](./assets/screenshot.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Learning Outcomes
 
-### Code Splitting
+Implemented drag-and-drop functionality
+Applied optimistic UI updates
+Handled asynchronous API calls
+Implemented rollback strategy on failure
+Built a clean and responsive UI
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## License
 
-### Analyzing the Bundle Size
+MIT license
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
