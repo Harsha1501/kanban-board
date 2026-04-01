@@ -16,21 +16,22 @@ export default function Board() {
 
   const columns = ["todo", "inprogress", "done"];
 
-  // ✅ Optimistic UI + Rollback
+  //  Optimistic UI + Rollback (IMPROVED)
   const moveTask = async (taskId, newStatus) => {
-    const prevTasks = [...tasks]; // Save previous state
+    const prevTasks = JSON.parse(JSON.stringify(tasks)); //  deep copy
 
-    // 🔥 Optimistic Update
+    //  Optimistic Update
     const updated = tasks.map((task) =>
       task.id === taskId ? { ...task, status: newStatus } : task
     );
 
-    setTasks(updated); // UI updates instantly
+    setTasks(updated);
 
     try {
       await updateTaskStatus(taskId, newStatus);
+      toast.success("Task moved!");
     } catch {
-      // ❌ Rollback if API fails
+      //  Rollback
       setTasks(prevTasks);
       toast.error("Failed to move task!");
     }
@@ -52,14 +53,14 @@ export default function Board() {
 
     let newStatus = over.id;
 
-    // Handle drop on another card
+    // Handle dropping on another card
     const overTask = tasks.find((t) => t.id === over.id);
     if (overTask) {
       newStatus = overTask.status;
     }
 
-    if (!columns.includes(newStatus)) return;
-    if (task.status === newStatus) return;
+    //  Clean condition
+    if (!columns.includes(newStatus) || task.status === newStatus) return;
 
     moveTask(task.id, newStatus);
   };
